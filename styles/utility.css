@@ -1,0 +1,66 @@
+.py-base{
+    padding-block: var(--py-base);
+}
+
+.py-lg{
+    padding-block: var(--py-lg);
+}
+
+.py-xl{
+    padding-block: var(--py-xl);
+}
+
+.px-lg{
+    padding-inline: var(--px-lg);
+}
+
+.container{
+    --max-width:375px;
+    width: min(var(--max-width), 100% - var(--px-lg) * 2);
+    margin-inline: auto;
+    
+}
+
+.desktop-only{ /* Aqui quando estiver no mobile a div vai sumir */
+    display: none;
+}
+
+.even-columns{
+    display: grid; /* Aqui faz os elementos ficarem um abaixo do outro*/
+    gap: 1rem;
+}
+
+.flex{
+    display: flex;
+}
+
+.items-center{
+    align-items: center;
+}
+
+.gap-1{
+    gap: 1rem
+}
+
+.gap-1\.5{
+    gap: 1.5rem;
+}
+
+.grid{
+    display: grid;
+}
+
+@media (width >= 80em){
+    .container{
+        --max-width: 80rem
+    }
+
+    .desktop-only{ /* e aqui quando estiver numa tela grande vai pegar o que era o padrão inicial */
+        display: initial;
+    }
+
+    .even-columns{ /* E aqui faz o contrario do que foi aplicado em tela menor, no caso aqui os itens voltam a ficar em tamanho igual lado a lado*/
+        grid-auto-flow: column;
+        grid-auto-columns: 1fr;
+    }
+}

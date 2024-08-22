@@ -1,0 +1,74 @@
+.btn{
+    border: 0;
+    --btn-bg-color: var(--text-color-primary);
+    --btn-color: var(--bg-color);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: fit-content;/* Essa propriedade faz com que a largura se adapte conforme o texto do elemento*/
+    border-radius: .5rem;
+    font: var(--fw-md) var(--fs-base)/1.5rem var(--ff-sans);
+    cursor: pointer;
+
+    background: var(--btn-bg-color);
+    color: var(--btn-color);
+}
+
+.btn:hover{
+    --btn-bg-color: linear-gradient(
+        90deg,
+        var(--brand-color-secondary) 0%,
+        var(--brand-color-primary)100%
+    );
+    --btn-color:var(--surface-color);
+    -webkit-background-clip: initial; /* coloca essas propriedades quando aplica o linear gradient para definir o recorte do texto em que vai aplicar o gradient*/
+    background-clip: initial;
+    color: var(--btn-color);
+}
+
+.btn-sm{
+    padding: .5rem  1rem;
+    font-size: var(--ff-sm);
+}
+.btn-md{
+    padding: .75rem 1.5rem;
+    font-size: var(--fs-base);
+}
+.btn-lg{
+    padding: 1rem 2rem;
+    font-size: 1.125rem;
+}
+
+.btn[aria-label]{ /* propriedade faz com que crie um elemento após a o elemento onde a classe foi definida*/
+    position: relative;
+    &::before{ /*propriedade cria uma borda no elemento*/
+        content: "";
+        position: absolute; /*posicionamento absoluto deste elemento é relativo  ao adicionado anteriormente*/
+        border-radius: inherit; /* erda as configurações do elemento anterior*/
+        inset:1.5px;
+        background-color: var(--bg-color);
+    }     
+    
+    &::after{
+        content: attr(aria-label);
+        background: var(--btn-bg-color);
+        -webkit-background-clip:text;
+        background-clip: text;
+        color: transparent;
+        position: relative;
+    }
+}
+
+@media(width >= 80em){
+
+    .btn-sm{
+        padding: .75rem 1.5rem;
+        font-size: var(--fs-base);
+    }
+    .btn-md{
+        padding: 1rem 2rem;
+        font-size: 1.125rem;
+    }
+}
